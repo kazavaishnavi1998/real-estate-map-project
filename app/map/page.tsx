@@ -6,6 +6,7 @@ const HomePage = () => {
     <div>
       <h1>Welcome to the Map Page</h1>
       <MapComponent />
+     
     </div>
   );
 };
