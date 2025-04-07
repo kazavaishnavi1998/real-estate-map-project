@@ -27,11 +27,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <li className="mb-2">
                   <Link href="/settings" className="hover:text-gray-300">Settings</Link>
                 </li>
-                <li>
+                <li className="mb-2">
                   <Link href="/map" className="hover:text-gray-300">Map</Link>
                 </li>
-                <li>
+                <li className="mb-2">
                   <Link href="/graphql" className="hover:text-gray-300">GraphQL</Link>
+                </li>
+                <li className="mb-2">
+                  <Link href="/mapParcel" className="hover:text-gray-300">mapParcel</Link>
                 </li>
               </ul>
             </nav>
