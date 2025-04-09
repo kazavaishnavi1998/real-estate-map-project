@@ -15,21 +15,21 @@ const MapParcelComponent = () => {
   });
 
   const [showPopup, setShowPopup] = useState(false);
-  const [parcelId, setParcelId] = useState(null); 
+  const [parcelId, setParcelId] = useState(null);
   const mapRef = useRef<MapRef | null>(null);
 
   const handleMapClick = (event: MapLayerMouseEvent) => {
-  
+
     setMarker({
       latitude: event.lngLat.lat,
       longitude: event.lngLat.lng,
     });
-  
-    
+
+
     if (event.features && event.features.length > 0) {
       const parcelFeature = event.features[0];
       const clickedParcelId = parcelFeature.properties?.ID;
-  
+
       if (clickedParcelId) {
         setParcelId(clickedParcelId);
       } else {
@@ -38,14 +38,12 @@ const MapParcelComponent = () => {
     } else {
       setParcelId(null);
     }
-  
-    // Always show popup
     setShowPopup(true);
   };
-  
+
 
   useEffect(() => {
-   
+
   }, [parcelId]);
 
   return (
@@ -60,24 +58,24 @@ const MapParcelComponent = () => {
         mapboxAccessToken={MAPBOX_TOKEN}
         mapStyle="mapbox://styles/mapbox/streets-v11"
         onClick={handleMapClick}
-        interactiveLayerIds={["parcels-line-layer", "parcels-fill-layer"]} 
+        interactiveLayerIds={["parcels-line-layer", "parcels-fill-layer"]}
         ref={mapRef}
       >
-      
+
         <Source
           id="parcels"
           type="vector"
-          url="mapbox://svayser.ae1mculr" 
+          url="mapbox://svayser.ae1mculr"
         >
-         
+
           <Layer
             id="parcels-line-layer"
             type="line"
             source="parcels"
             source-layer="manhattan_staten_island_parce-7ng65o"
             paint={{
-              "line-color": "#0077FF", 
-              "line-width": 2, 
+              "line-color": "#0077FF",
+              "line-width": 2,
             }}
           />
           <Layer
@@ -86,8 +84,8 @@ const MapParcelComponent = () => {
             source="parcels"
             source-layer="manhattan_staten_island_parce-7ng65o"
             paint={{
-              "fill-color":  "#FFEB3B", 
-              "fill-opacity": 0.3, 
+              "fill-color": "#FFEB3B",
+              "fill-opacity": 0.3,
             }}
           />
         </Source>
@@ -109,7 +107,7 @@ const MapParcelComponent = () => {
           />
         </Marker>
 
-        
+
         {showPopup && (
           <Popup
             latitude={marker.latitude}
@@ -118,14 +116,19 @@ const MapParcelComponent = () => {
             closeOnClick={false}
             onClose={() => setShowPopup(false)}
           >
-            <div>
-            {parcelId && <h3>Parcel Information</h3>}
-              <h3> Cordinates</h3>
+            <div style={{
+              backgroundColor: '#1e1e1e',
+              color: '#f0f0f0',
+              padding: '10px',
+              borderRadius: '8px',
+              minWidth: '200px'
+            }}>
+              {parcelId && <h3 style={{ marginBottom: '5px' }}>Parcel Information</h3>}
+              <h3 style={{ marginBottom: '5px' }}>Coordinates</h3>
               <p>Lat: {marker.latitude.toFixed(4)}</p>
               <p>Lon: {marker.longitude.toFixed(4)}</p>
               {parcelId && (
-                
-                <p><strong>Parcel ID: {parcelId}</strong></p>
+                <p><strong>Parcel ID:</strong> {parcelId}</p>
               )}
             </div>
           </Popup>
