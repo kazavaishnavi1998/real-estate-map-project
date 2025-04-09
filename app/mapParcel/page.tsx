@@ -1,9 +1,9 @@
-import MapComponent from '../components/MapComponent';
+import MapParcelComponent from '../components/MapParcelComponent'
 
 const HomePage = () => {
   return (
     <div>
-      <MapComponent />
+      <MapParcelComponent />
      
     </div>
   );

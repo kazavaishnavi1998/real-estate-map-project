@@ -5,48 +5,42 @@ import ApolloProviderWrapper from "./graphql/ApolloProviderWrapper";
 
 export const metadata: Metadata = {
   title: "Basic Layout",
-  description: "Next.js Layout with Header, Sidebar, and Content Area",
+  description: "Next.js Layout with Top Navigation",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <ApolloProviderWrapper>
       <html lang="en">
-        <body className="flex min-h-screen">
-          {/* Sidebar */}
-          <aside className="w-64 bg-gray-800 text-white p-6">
-            <h2 className="text-xl font-bold mb-4">Dashboard</h2>
-            <nav>
-              <ul>
-                <li className="mb-2">
-                  <Link href="/home" className="hover:text-gray-300">Home</Link>
-                </li>
-                <li className="mb-2">
-                  <Link href="/profile" className="hover:text-gray-300">Profile</Link>
-                </li>
-                <li className="mb-2">
-                  <Link href="/settings" className="hover:text-gray-300">Settings</Link>
-                </li>
-                <li>
-                  <Link href="/map" className="hover:text-gray-300">Map</Link>
-                </li>
-                <li>
-                  <Link href="/graphql" className="hover:text-gray-300">GraphQL</Link>
-                </li>
-              </ul>
-            </nav>
-          </aside>
-
-          {/* Main Content Area */}
-          <div className="flex-1">
-            {/* Header */}
-            <header className="bg-gray-700 text-white p-4">
-              <h1 className="text-2xl">Welcome to the Dashboard</h1>
-            </header>
-
-            {/* Content */}
-            <main className="p-6">{children}</main>
-          </div>
+        <body className="flex flex-col min-h-screen bg-gray-100">
+          <header className="bg-gray-800 text-white px-6 py-4 shadow-md">
+            <div className="flex items-center gap-6">
+              <h1 className="text-xl font-bold">Dashboard</h1>
+              <nav>
+                <ul className="flex gap-6 text-sm font-medium">
+                  <li>
+                    <Link href="/home" className="hover:text-gray-300">Home</Link>
+                  </li>
+                  <li>
+                    <Link href="/profile" className="hover:text-gray-300">Profile</Link>
+                  </li>
+                  <li>
+                    <Link href="/settings" className="hover:text-gray-300">Settings</Link>
+                  </li>
+                  <li>
+                    <Link href="/map" className="hover:text-gray-300">Map</Link>
+                  </li>
+                  <li>
+                    <Link href="/graphql" className="hover:text-gray-300">GraphQL</Link>
+                  </li>
+                  <li>
+                    <Link href="/mapParcel" className="hover:text-gray-300">Map Parcel</Link>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </header>
+          <main className="flex-1">{children}</main>
         </body>
       </html>
     </ApolloProviderWrapper>
