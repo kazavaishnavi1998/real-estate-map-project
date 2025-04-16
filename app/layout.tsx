@@ -36,6 +36,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <li>
                     <Link href="/mapParcel" className="hover:text-gray-300">Map Parcel</Link>
                   </li>
+                  <li>
+                    <Link href="/mapParcelGraphql" className="hover:text-gray-300">Map Parcel Graphql</Link>
+                  </li>
                 </ul>
               </nav>
             </div>
