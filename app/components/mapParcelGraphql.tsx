@@ -10,8 +10,8 @@ const MAPBOX_TOKEN =
   "pk.eyJ1Ijoic3ZheXNlciIsImEiOiJjbGgwbzl5NXcwdmMzM2VwdTkya2J6cDVmIn0.VrQewCt9w1K8QPsLzuDZjg";
 
 const GET_PROPERTIES = gql`
-  query MyQuery {
-    reonomyProperties {
+  query MyQuery($parcelId: String) {
+    reonomyProperties(filter: { parcel_id: { eq: $parcelId } }) {
       items {
         parcel_id
         year_built
@@ -64,11 +64,11 @@ const MapParcelComponent = () => {
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
   const mapRef = useRef<MapRef | null>(null);
 
-  const { data, loading, error } = useQuery(GET_PROPERTIES);
-
-  const parcelData = data?.reonomyProperties?.items?.find(
-    (item: any) => item.parcel_id === selectedParcelId
-  );
+  const { data: parcelData, loading, error } = useQuery(GET_PROPERTIES, {
+    variables: {
+      parcelId: selectedParcelId
+    }
+  });
 
   const handleMapClick = (event: MapLayerMouseEvent) => {
     setMarker({
@@ -97,12 +97,12 @@ const MapParcelComponent = () => {
         interactiveLayerIds={["parcels-line-layer", "parcels-fill-layer"]}
         ref={mapRef}
       >
-        <Source id="parcels" type="vector" url="mapbox://svayser.ae1mculr">
+        <Source id="parcels" type="vector" url="mapbox://svayser.parcel-boundaries">
           <Layer
             id="parcels-line-layer"
             type="line"
             source="parcels"
-            source-layer="manhattan_staten_island_parce-7ng65o"
+            source-layer="attom-parcels"
             paint={{
               "line-color": "#0077FF",
               "line-width": 2,
@@ -112,7 +112,7 @@ const MapParcelComponent = () => {
             id="parcels-fill-layer"
             type="fill"
             source="parcels"
-            source-layer="manhattan_staten_island_parce-7ng65o"
+            source-layer="attom-parcels"
             paint={{
               "fill-color": "#FFEB3B",
               "fill-opacity": 0.3,
