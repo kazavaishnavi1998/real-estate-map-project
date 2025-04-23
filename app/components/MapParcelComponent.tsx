@@ -65,14 +65,14 @@ const MapParcelComponent = () => {
         <Source
           id="parcels"
           type="vector"
-          url="mapbox://svayser.ae1mculr"
+          url="mapbox://svayser.parcel-boundaries"
         >
 
           <Layer
             id="parcels-line-layer"
             type="line"
             source="parcels"
-            source-layer="manhattan_staten_island_parce-7ng65o"
+            source-layer="attom-parcels"
             paint={{
               "line-color": "#0077FF",
               "line-width": 2,
@@ -82,7 +82,7 @@ const MapParcelComponent = () => {
             id="parcels-fill-layer"
             type="fill"
             source="parcels"
-            source-layer="manhattan_staten_island_parce-7ng65o"
+            source-layer="attom-parcels"
             paint={{
               "fill-color": "#FFEB3B",
               "fill-opacity": 0.3,
