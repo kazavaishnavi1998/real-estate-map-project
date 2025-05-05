@@ -39,6 +39,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <li>
                     <Link href="/mapParcelGraphql" className="hover:text-gray-300">Map Parcel Graphql</Link>
                   </li>
+                  <li>
+                    <Link href="/mapGoogleAPISearch" className="hover:text-gray-300">Map GoogleAPI Search Address</Link>
+                  </li>
+                 
                 </ul>
               </nav>
             </div>
