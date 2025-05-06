@@ -7,7 +7,7 @@ import { gql, useQuery, useLazyQuery } from "@apollo/client";
 
 const MAPBOX_TOKEN =
   "pk.eyJ1Ijoic3ZheXNlciIsImEiOiJjbGgwbzl5NXcwdmMzM2VwdTkya2J6cDVmIn0.VrQewCt9w1K8QPsLzuDZjg";
-const GOOGLE_GEOCODE_API_KEY = "API Key";
+const GOOGLE_GEOCODE_API_KEY = "AIzaSyBfYMOfTUjqZylAVHMtepQJDkCl81twYKg";
 const GET_PROPERTIES = gql`
   query GetProperties($parcelId: String) {
     reonomyProperties(filter: { parcel_id: { eq: $parcelId } }) {
