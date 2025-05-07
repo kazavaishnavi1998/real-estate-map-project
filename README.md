@@ -47,7 +47,7 @@ Tilesets were created in Mapbox Studio and uploaded to be used as layers.
 Docs: Mapbox Studio, Mapbox GL JS
 
 🔌**GraphQL + Apollo Client**
-GraphQL enables efficient and flexible querying of backend data to get ParcelIds.
+GraphQL enables efficient and flexible querying of backend data to get ParcelIds and also get zone information and other information from the ParcelId.
 Apollo Client manages queries and local cache for real-time map updates and search filters.
 Docs: GraphQL, Apollo Client
 
